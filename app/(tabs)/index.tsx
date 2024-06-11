@@ -47,11 +47,9 @@ export default function HomeScreen() {
     );
   } else {
     return (
-      <ParallaxScrollView>
         <Text>
           loading...
         </Text>
-      </ParallaxScrollView>
     )
   }
  
