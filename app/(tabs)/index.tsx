@@ -8,8 +8,9 @@ import { useEffect, useState } from 'react';
 
 export default function HomeScreen() {
   const [data, setData] = useState(null);
+  const [entry, setEntry] = useState(null);
 
-  const fetchTheData = async () => {
+  const getEntries = async () => {
     try {
     const apiUrl = 'https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk';
     
@@ -21,15 +22,34 @@ export default function HomeScreen() {
     });
 
     const data = await response.json();
-    setData(data.items);
-    console.log(data.items[1])
+
+    return data;
   } catch (error) {
     console.error('Error fetching data:', error.message);
   }
 };
 
+const getEntry = async (id: string) => {
+  try {
+  const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries/${id}?access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+  
+  const response = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const data = await response.json();
+  setEntry(data);
+  console.log(data)
+} catch (error) {
+  console.error('Error fetching data:', error.message);
+}
+};
+
   useEffect(() => {
-    fetchTheData();
+    getEntries();
   }, []);
 
   if (data) {
