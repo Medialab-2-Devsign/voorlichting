@@ -22,8 +22,8 @@ export default function HomeScreen() {
     });
 
     const data = await response.json();
+    setData(data.items);
 
-    return data;
   } catch (error) {
     console.error('Error fetching data:', error.message);
   }
@@ -42,7 +42,6 @@ const getEntry = async (id: string) => {
 
   const data = await response.json();
   setEntry(data);
-  console.log(data)
 } catch (error) {
   console.error('Error fetching data:', error.message);
 }
@@ -62,7 +61,7 @@ const getEntry = async (id: string) => {
             style={styles.reactLogo}
           />
         }>
-       <Text> HAllo</Text>
+       <ThemedText> {data[0].fields.excerpt}</ThemedText>
       </ParallaxScrollView>
     );
   } else {
