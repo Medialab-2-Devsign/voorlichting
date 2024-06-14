@@ -15,15 +15,20 @@ Deze app stelt zorgverleners in staat om:
 Om de Erasmus MC Voorlichtingsapp lokaal te installeren, volg de onderstaande stappen:
 
 ## Clone de repository:
+### Navigeer naar de projectdirectory
 
-## Gebruik
+```bash
+cd voorlichting
 
-Na het installeren van de app kunnen zorgverleners en ondersteunend personeel het volgende doen:
+### Installeer de benodigde afhankelijkheden
 
-- **Inloggen**: Gebruik de toegewezen inloggegevens om toegang te krijgen tot de app.
-- **Selecteer Taal**: Kies de taal van voorlichtingsmateriaal voor de specifieke patiënt.
-- **Bekijk Voorlichtingsmateriaal**: Blader door beschikbare informatie zoals video's, afbeeldingen en tekstuele uitleg.
-- **Interactieve Elementen**: Indien beschikbaar, neem deel aan interactieve elementen zoals quizzen of feedbackformulieren.
+```bash
+npm install
+
+### Start de ontwikkelingsserver
+
+```bash
+npx expo start
 
 ## Bijdragen
 
