@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import colors from '../../frontend/Colors'
+import GlobeImage from '../../assets/images/Globe.png'
+
 
 const OnboardingScreen = (props) => {
   const onDone = () => {
@@ -18,7 +20,8 @@ const OnboardingScreen = (props) => {
           subtitle: 'Een korte introductie over je app.',
         },
         {
-          backgroundColor: colors.blue__700,
+          backgroundColor: colors.grey__100,
+          image: <Image source={GlobeImage} />,
           title: 'Tweede scherm',
           subtitle: 'Meer informatie over je app.',
         },
