@@ -14,7 +14,22 @@ Deze app stelt zorgverleners in staat om:
 
 Om de Erasmus MC Voorlichtingsapp lokaal te installeren, volg de onderstaande stappen:
 
-1. Clone de repository:
+## Clone de repository:
 
-   ```bash
-   git clone https://github.com/jouw-gebruikersnaam/erasmusmc-voorlichtingsapp.git
+## Gebruik
+
+Na het installeren van de app kunnen zorgverleners en ondersteunend personeel het volgende doen:
+
+- **Inloggen**: Gebruik de toegewezen inloggegevens om toegang te krijgen tot de app.
+- **Selecteer Taal**: Kies de taal van voorlichtingsmateriaal voor de specifieke patiënt.
+- **Bekijk Voorlichtingsmateriaal**: Blader door beschikbare informatie zoals video's, afbeeldingen en tekstuele uitleg.
+- **Interactieve Elementen**: Indien beschikbaar, neem deel aan interactieve elementen zoals quizzen of feedbackformulieren.
+
+## Bijdragen
+
+We verwelkomen bijdragen van de gemeenschap om de Erasmus MC Voorlichtingsapp te verbeteren en uit te breiden. Als je wilt bijdragen:
+
+1. Fork de repository en maak je eigen branch: `git checkout -b feature/nieuwe-functie`
+2. Commit je wijzigingen: `git commit -am 'Voeg een nieuwe functie toe'`
+3. Duw naar de branch: `git push origin feature/nieuwe-functie`
+4. Maak een nieuw Pull Request
