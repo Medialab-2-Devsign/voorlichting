@@ -19,7 +19,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>{i18n.t("hello")}</Text>
+      <Text>{i18n.t("vochtbalans.description")}</Text>
       {data?.items &&
         data.items.map((item, index) => {
           const img = data.includes.Asset.find(
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   cardContent: {
     height: "100%",
     width: "100%",
-    backgroundColor: "red",
+    backgroundColor: "transparent",
     justifyContent: "flex-end",
     alignItems: "center",
     title: {
