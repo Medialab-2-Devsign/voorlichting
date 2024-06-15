@@ -1,50 +1,35 @@
-# Welcome to your Expo app 👋
+# Erasmus MC Voorlichtingsapp voor Patiënten met Taalbarrière
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overzicht
 
-## Get started
+De Erasmus MC Voorlichtingsapp is ontworpen om patiënten met een taalbarrière effectief te voorzien van belangrijke medische voorlichting en informatie. Het doel van deze app is om de communicatie tussen zorgverleners en patiënten te verbeteren door gebruik te maken van visuele en eenvoudig te begrijpen content.
 
-1. Install dependencies
+Deze app stelt zorgverleners in staat om:
 
-   ```bash
-   npm install
-   ```
+- **Voorlichtingsmateriaal**: Essentiële medische informatie te delen in verschillende talen en visuele formaten.
+- **Interactieve Communicatie**: Patiënten te betrekken met interactieve elementen zoals quizzen of video's.
+- **Gebruiksvriendelijkheid**: Een intuïtieve gebruikersinterface bieden, toegankelijk voor zowel zorgverleners als patiënten.
 
-2. Start the app
+## Installatie
 
-   ```bash
-    npx expo start
-   ```
+Om de Erasmus MC Voorlichtingsapp lokaal te installeren, volg de onderstaande stappen:
 
-In the output, you'll find options to open the app in a
+## Clone de repository
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Navigeer naar de projectdirectory
+cd voorlichting
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Installeer de benodigde afhankelijkheden
+npm install
 
-## Get a fresh project
+### Start de ontwikkelingsserver
+npx expo start
 
-When you're ready, run:
+## Bijdragen
 
-```bash
-npm run reset-project
-```
+We verwelkomen bijdragen van de gemeenschap om de Erasmus MC Voorlichtingsapp te verbeteren en uit te breiden. Als je wilt bijdragen:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Fork de repository en maak je eigen branch: `git checkout -b feature/nieuwe-functie`
+2. Commit je wijzigingen: `git commit -am 'Voeg een nieuwe functie toe'`
+3. Duw naar de branch: `git push origin feature/nieuwe-functie`
+4. Maak een nieuw Pull Request
