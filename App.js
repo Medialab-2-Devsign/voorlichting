@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import OnboardingScreen from "./components/onboarding/OnboardingScreen";
-import HomeScreen from "./components/HomeScreen";
+import { HomeStack } from "./components/Home/HomeStack";
 import ProfileScreen from "./components/ProfileScreen";
 
 import useContentfulData from "./api/api";
@@ -38,7 +38,7 @@ const HomeTab = ({ data }) => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home">
-        {(props) => <HomeScreen {...props} />}
+        {(props) => <HomeStack {...props} data={data} />}
       </Tab.Screen>
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
