@@ -1,6 +1,6 @@
 // api.js
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useContentfulData = () => {
   const [data, setData] = useState(null);
@@ -8,20 +8,20 @@ const useContentfulData = () => {
 
   const getEntries = async () => {
     try {
-      const apiUrl = 'https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk';
+      const apiUrl =
+        "https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk";
 
       const response = await fetch(apiUrl, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Content-Type": "application/json",
+        },
       });
 
       const data = await response.json();
       setData(data.items);
-
     } catch (error) {
-      console.error('Error fetching data:', error.message);
+      console.error("Error fetching data:", error.message);
     }
   };
 
@@ -30,17 +30,16 @@ const useContentfulData = () => {
       const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries/${id}?access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
 
       const response = await fetch(apiUrl, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Content-Type": "application/json",
+        },
       });
 
       const data = await response.json();
       setEntry(data);
-
     } catch (error) {
-      console.error('Error fetching data:', error.message);
+      console.error("Error fetching data:", error.message);
     }
   };
 
@@ -51,8 +50,26 @@ const useContentfulData = () => {
   return {
     data,
     entry,
-    getEntry
+    getEntry,
   };
 };
 
 export default useContentfulData;
+
+export const getEntriesByContentType = async (contentType) => {
+  try {
+    const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?content_type=${contentType}&include=10&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+  }
+};

@@ -19,7 +19,8 @@
     "react": "18.2.0",
     "react-native": "0.74.2",
     "react-native-onboard": "^2.6.0",
-    "react-native-onboarding-swiper": "^1.2.0"
+    "react-native-onboarding-swiper": "^1.2.0",
+    "expo-image": "~1.12.12"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

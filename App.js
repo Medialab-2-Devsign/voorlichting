@@ -23,23 +23,23 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Onboarding">
           <Stack.Screen name="Onboarding" options={{ headerShown: false }}>
-            {(props) => <OnboardingScreen {...props} data={data} />}
+            {(props) => <OnboardingScreen {...props} />}
           </Stack.Screen>
-          <Stack.Screen
-            name="HomeTab"
-            component={HomeTab}
-            options={{ headerShown: false }}
-          />
+          <Stack.Screen name="HomeTab" options={{ headerShown: false }}>
+            {(props) => <HomeTab data={data} {...props} />}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </TranslationProvider>
   );
 };
 
-const HomeTab = () => {
+const HomeTab = ({ data }) => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home">
+        {(props) => <HomeScreen {...props} />}
+      </Tab.Screen>
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
