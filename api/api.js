@@ -56,12 +56,16 @@ const useContentfulData = () => {
 
 export default useContentfulData;
 
-export const getEntriesByContentType = async (contentType, sort, locale) => {
+// fetch all entries by contenttype id, optional locale and sort
+export const getEntriesByContentType = async (contentType, locale, sort) => {
   try {
+    const localeParam = locale && `locale=${locale}&`;
     const sortParam = sort && `order=${sort}&`;
     const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?content_type=${contentType}&${
       sortParam ?? ""
-    }locale=${locale}&include=10&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+    }${
+      localeParam ?? ""
+    }include=10&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
 
     const response = await fetch(apiUrl, {
       method: "GET",
@@ -77,9 +81,13 @@ export const getEntriesByContentType = async (contentType, sort, locale) => {
   }
 };
 
+// fetch entry by id. optional locale
 export const getEntryByID = async (id, locale) => {
   try {
-    const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries/${id}?locale=${locale}&includes=10&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+    const localeParam = locale && `locale=${locale}&`;
+    const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries/${id}?${
+      localeParam ?? ""
+    }includes=10&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
 
     const response = await fetch(apiUrl, {
       method: "GET",
@@ -95,14 +103,16 @@ export const getEntryByID = async (id, locale) => {
   }
 };
 
-export const getEntriesByIDs = async (ids, sort, locale) => {
+// Pass in array of multiple IDs and fetch all those entries. optional locale and sort
+export const getEntriesByIDs = async (ids, locale, sort) => {
   try {
+    const localeParam = locale && `locale=${locale}&`;
     const sortParam = sort && `order=${sort}&`;
     const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?sys.id[in]=${ids.join(
       ","
-    )}&${
-      sort && sortParam
-    }locale=${locale}&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+    )}&${sort && sortParam}${
+      localeParam ?? ""
+    }access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
     const response = await fetch(apiUrl, {
       method: "GET",
       headers: {

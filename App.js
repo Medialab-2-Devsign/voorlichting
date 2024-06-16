@@ -19,7 +19,7 @@ const App = () => {
   const { data } = useContentfulData(); // Vergeet niet de hook aan te roepen met ()
 
   return (
-    <TranslationProvider defaultLocale={"en-US"}>
+    <TranslationProvider defaultLocale={"nl"}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Onboarding">
           <Stack.Screen name="Onboarding" options={{ headerShown: false }}>

@@ -35,8 +35,8 @@ export const CounselScreen = ({ navigation, route }) => {
       const counselIDs = res.fields.counsels.map((counsel) => counsel.sys.id);
       const counselsRes = await getEntriesByIDs(
         counselIDs,
-        "sys.createdAt",
-        i18n.locale
+        i18n.locale,
+        "sys.createdAt"
       );
       const sortedCounsels = counselIDs.map((id) =>
         counselsRes.items.find((item) => item.sys.id === id)

@@ -20,8 +20,8 @@ export const HomeScreen = ({ navigation }) => {
     (async () => {
       const res = await getEntriesByContentType(
         "context",
-        "sys.createdAt",
-        i18n.locale
+        i18n.locale,
+        "sys.createdAt"
       );
       setData(res);
     })();
