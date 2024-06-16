@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import { getEntryByID } from "../../api/api";
 
-export const CounselingScreen = ({ navigation, route }) => {
+export const StepScreen = ({ navigation, route }) => {
   const [id, setID] = useState(null);
   const [data, setData] = useState();
 

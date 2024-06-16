@@ -9,7 +9,7 @@ import {
 import { TranslationContext } from "../../contexts/TranslationContext";
 import { getEntriesByContentType } from "../../api/api";
 
-import { CounselingCard } from "../Cards/CounselingCard";
+import { ListCard } from "../Cards/ListCard";
 
 export const HomeScreen = ({ navigation }) => {
   const { i18n } = useContext(TranslationContext);
@@ -18,21 +18,24 @@ export const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await getEntriesByContentType("counseling");
+      const res = await getEntriesByContentType(
+        "context",
+        "sys.createdAt",
+        i18n.locale
+      );
       setData(res);
     })();
   }, []);
 
   const onCardPress = (id) => {
-    console.log(id);
-    navigation.navigate("Counseling", { id: id });
+    navigation.navigate("Counsel", { id: id });
   };
 
   const renderCards = ({ item }) => {
     const icon = data.includes.Asset.find(
       (element) => element?.sys?.id === item?.fields?.icon?.sys?.id
     );
-    return <CounselingCard item={item} icon={icon} onCardPress={onCardPress} />;
+    return <ListCard item={item} icon={icon} onCardPress={onCardPress} />;
   };
 
   return (
@@ -46,7 +49,7 @@ export const HomeScreen = ({ navigation }) => {
           style={{ width: "100%" }}
           ListHeaderComponent={
             <Text style={styles.description.text}>
-              {i18n.t("vochtbalans.description")}
+              {i18n.t("context.description")}
             </Text>
           }
           ListHeaderComponentStyle={styles.description}

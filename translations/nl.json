@@ -1,5 +1,8 @@
 {
   "hello": "Hallo!",
+  "context": {
+    "description": "Selecteer een behandeling of gesprek"
+  },
   "vochtbalans": {
     "description": "Hier is informatie te vinden over het bijhouden van vochtbalans. Klik op een van deze onderdelen om de informatie te zien."
   }
