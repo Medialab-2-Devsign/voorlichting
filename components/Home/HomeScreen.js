@@ -37,7 +37,6 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>{i18n.t("vochtbalans.description")}</Text>
       {data?.items && (
         <FlatList
           numColumns={windowWidth > 500 ? 3 : 2}
@@ -45,6 +44,12 @@ export const HomeScreen = ({ navigation }) => {
           renderItem={(item) => renderCards(item)}
           keyExtractor={(item) => item.sys.id}
           style={{ width: "100%" }}
+          ListHeaderComponent={
+            <Text style={styles.description.text}>
+              {i18n.t("vochtbalans.description")}
+            </Text>
+          }
+          ListHeaderComponentStyle={styles.description}
         />
       )}
     </View>
@@ -57,5 +62,12 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     alignItems: "center",
     backgroundColor: "#0C207430",
+  },
+  description: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+    text: {
+      fontSize: 20,
+    },
   },
 });
