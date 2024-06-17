@@ -19,6 +19,7 @@ export const CounselScreen = ({ navigation, route }) => {
   const windowWidth = useWindowDimensions().width;
 
   useEffect(() => {
+    // check for id, if no id is given refer them back to the Homescreen where they can select a Context.
     if (!route?.params?.id && !id) {
       navigation.navigate("HomeScreen");
     }
@@ -29,15 +30,19 @@ export const CounselScreen = ({ navigation, route }) => {
   useEffect(() => {
     if (id === null) return;
     (async () => {
+      // fetch selected Context.
       const res = await getEntryByID(id, i18n.locale);
       setData(res);
 
+      // Collect all counselIDs to be able to fetch them.
       const counselIDs = res.fields.counsels.map((counsel) => counsel.sys.id);
       const counselsRes = await getEntriesByIDs(
         counselIDs,
         i18n.locale,
         "sys.createdAt"
       );
+
+      // Sort Counsels as they are ordered in the Context.
       const sortedCounsels = counselIDs.map((id) =>
         counselsRes.items.find((item) => item.sys.id === id)
       );
@@ -50,7 +55,18 @@ export const CounselScreen = ({ navigation, route }) => {
     navigation.navigate("Step", { id: id });
   };
 
+  const renderListHeader = () => {
+    return (
+      <Text style={styles.description.text}>
+        {/* // wtf */}
+        {data?.fields?.description?.content[0]?.content[0]?.value ?? ""}{" "}
+        {i18n.t("description.cta")}
+      </Text>
+    );
+  };
+
   const renderCards = ({ item }) => {
+    // images are found in an array called includes, and not with the items themselves.
     const icon = counsels?.includes?.Asset?.find(
       (element) => element?.sys?.id === item?.fields?.icon?.sys?.id
     );
@@ -66,11 +82,7 @@ export const CounselScreen = ({ navigation, route }) => {
           renderItem={(item) => renderCards(item)}
           keyExtractor={(item) => item.sys.id}
           style={{ width: "100%" }}
-          ListHeaderComponent={
-            <Text style={styles.description.text}>
-              {i18n.t("vochtbalans.description")}
-            </Text>
-          }
+          ListHeaderComponent={() => renderListHeader()}
           ListHeaderComponentStyle={styles.description}
         />
       )}

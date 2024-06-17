@@ -3,7 +3,7 @@
   "context": {
     "description": "Select a treatment or conversation"
   },
-  "vochtbalans": {
-    "description": "Here you can find information about maintaining fluid balance. Click on any of these items to view the information."
+  "description": {
+    "cta": "Click on any of these items to view more information."
   }
 }

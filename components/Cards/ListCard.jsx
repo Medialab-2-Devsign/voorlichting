@@ -17,7 +17,7 @@ export const ListCard = ({ item, icon, onCardPress }) => {
             source={`https:${icon.fields.file.url}`}
             placeholder={{ blurhash }}
             contentFit="cover"
-            transition={1000}
+            transition={300}
             style={{
               height: "80%",
               width: "100%",
