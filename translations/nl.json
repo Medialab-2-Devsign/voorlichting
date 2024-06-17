@@ -1,9 +1,17 @@
 {
   "hello": "Hallo!",
+  "ui": {
+    "nextButton": "Volgende",
+    "completeButton": "Voltooi",
+    "cancelButton": "Annuleren",
+    "closeButton": "Sluiten",
+    "skipButton": "Overslaan",
+    "goToHomeButton": "Ga naar Home"
+  },
   "context": {
     "description": "Selecteer een behandeling of gesprek."
   },
   "description": {
-    "cta": "Klik op een van deze onderdelen om meer informatie te zien."
+    "cta": "Klik op een van deze items voor meer informatie."
   }
 }

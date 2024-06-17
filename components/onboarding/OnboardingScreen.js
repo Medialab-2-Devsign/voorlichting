@@ -1,39 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import colors from '../../frontend/Colors';
 import GlobeImage from '../../assets/images/Globe.png';
+import { TranslationContext } from '../../contexts/TranslationContext'; // Importeer TranslationContext
 
 const OnboardingScreen = (props) => {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
-
-  const languages = [
-    { label: 'Nederlands', value: 'nl' },
-    { label: 'English', value: 'en' },
-    { label: 'Español', value: 'es' },
-    { label: 'Français', value: 'fr' },
-    { label: 'Deutsch', value: 'de' },
-
-  ];
+  const { i18n, changeLocale } = useContext(TranslationContext); // Gebruik useContext om toegang te krijgen tot i18n en changeLocale
 
   const onLanguageSelect = (language) => {
     setSelectedLanguage(language);
+    changeLocale(language); // Wijzig de taal met changeLocale
   };
 
   const renderLanguageList = () => {
-    return languages.map((language, index) => (
+    return i18n.availableLocales.map((language, index) => (
       <TouchableOpacity
         key={index}
-        style={[styles.languageItem, selectedLanguage === language.value && styles.selectedItem]}
-        onPress={() => onLanguageSelect(language.value)}
+        style={[styles.languageItem, selectedLanguage === language.code && styles.selectedItem]}
+        onPress={() => onLanguageSelect(language.code)}
       >
-        <Text style={[styles.languageText, selectedLanguage === language.value && styles.selectedText]}>{language.label}</Text>
+        <Text style={[styles.languageText, selectedLanguage === language.code && styles.selectedText]}>{language.languageString}</Text>
       </TouchableOpacity>
     ));
   };
 
   const onDone = () => {
-    // Hier kun je de geselecteerde taal verder verwerken
     props.navigation.navigate('HomeTab');
   };
 
@@ -43,8 +36,8 @@ const OnboardingScreen = (props) => {
       pages={[
         {
           backgroundColor: colors.blue__700,
-          title: 'Welkom bij Onboarding',
-          subtitle: 'Een korte introductie over je app.',
+          title: i18n.t('hello'), // Gebruik i18n.t om vertalingen te verkrijgen
+          // subtitle: i18n.t('welcomeSubtitle'), // Gebruik i18n.t om vertalingen te verkrijgen
         },
         {
           backgroundColor: colors.grey__100,
@@ -101,7 +94,7 @@ const styles = StyleSheet.create({
     color: colors.blue__700,
   },
   selectedText: {
-    color: '#ffffff', // Witte tekstkleur voor geselecteerde taal
+    color: '#ffffff', 
   },
 });
 

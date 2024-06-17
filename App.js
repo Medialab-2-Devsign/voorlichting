@@ -10,7 +10,7 @@ import { HomeStack } from "./components/Home/HomeStack";
 import ProfileScreen from "./components/ProfileScreen";
 
 import useContentfulData from "./api/api";
-import { TranslationProvider } from "./contexts/TranslationContext";
+import { TranslationProvider, changeLocale } from "./contexts/TranslationContext";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,7 +23,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Onboarding">
           <Stack.Screen name="Onboarding" options={{ headerShown: false }}>
-            {(props) => <OnboardingScreen {...props} />}
+            {(props) => <OnboardingScreen {...props} changeLocale={changeLocale} />}
           </Stack.Screen>
           <Stack.Screen name="HomeTab" options={{ headerShown: false }}>
             {(props) => <HomeTab data={data} {...props} />}
