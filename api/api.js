@@ -25,7 +25,7 @@ const useContentfulData = () => {
     }
   };
 
-  const getEntry = async (id, locale) => {
+  const getEntry = async (id) => {
     try {
       const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries/${id}?access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
 
@@ -56,16 +56,34 @@ const useContentfulData = () => {
 
 export default useContentfulData;
 
-// fetch all entries by contenttype id, optional locale and sort
+const setLocaleParam = (locale) => {
+  return locale === "nl" ? "nl" : "en-US";
+};
+
+const buildApiUrl = (baseUrl, params) => {
+  const queryString = Object.keys(params)
+    .filter((key) => params[key] !== undefined)
+    .map(
+      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+    )
+    .join("&");
+  return `${baseUrl}?${queryString}`;
+};
+
 export const getEntriesByContentType = async (contentType, locale, sort) => {
   try {
-    const localeParam = locale && `locale=${locale}&`;
-    const sortParam = sort && `order=${sort}&`;
-    const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?content_type=${contentType}&${
-      sortParam ?? ""
-    }${
-      localeParam ?? ""
-    }include=10&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+    const params = {
+      content_type: contentType,
+      order: sort,
+      locale: locale ? setLocaleParam(locale) : undefined,
+      include: 10,
+      access_token: "JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk",
+    };
+
+    const apiUrl = buildApiUrl(
+      "https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries",
+      params
+    );
 
     const response = await fetch(apiUrl, {
       method: "GET",
@@ -81,13 +99,18 @@ export const getEntriesByContentType = async (contentType, locale, sort) => {
   }
 };
 
-// fetch entry by id. optional locale
 export const getEntryByID = async (id, locale) => {
   try {
-    const localeParam = locale && `locale=${locale}&`;
-    const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries/${id}?${
-      localeParam ?? ""
-    }includes=10&access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+    const params = {
+      locale: locale ? setLocaleParam(locale) : undefined,
+      includes: 10,
+      access_token: "JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk",
+    };
+
+    const apiUrl = buildApiUrl(
+      `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries/${id}`,
+      params
+    );
 
     const response = await fetch(apiUrl, {
       method: "GET",
@@ -103,16 +126,20 @@ export const getEntryByID = async (id, locale) => {
   }
 };
 
-// Pass in array of multiple IDs and fetch all those entries. optional locale and sort
 export const getEntriesByIDs = async (ids, locale, sort) => {
   try {
-    const localeParam = locale && `locale=${locale}&`;
-    const sortParam = sort && `order=${sort}&`;
-    const apiUrl = `https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries?sys.id[in]=${ids.join(
-      ","
-    )}&${sort && sortParam}${
-      localeParam ?? ""
-    }access_token=JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk`;
+    const params = {
+      "sys.id[in]": ids.join(","),
+      order: sort,
+      locale: locale ? setLocaleParam(locale) : undefined,
+      access_token: "JIUK52a12pwwal6mqdHN4FWIssE7nrtcR0bs7Xsogpk",
+    };
+
+    const apiUrl = buildApiUrl(
+      "https://cdn.contentful.com/spaces/yshlrg4y56c9/environments/master/entries",
+      params
+    );
+
     const response = await fetch(apiUrl, {
       method: "GET",
       headers: {

@@ -1,0 +1,17 @@
+{
+  "hello": "Merhaba!",
+  "ui": {
+    "nextButton": "Sonraki",
+    "completeButton": "Tamamla",
+    "cancelButton": "İptal",
+    "closeButton": "Kapat",
+    "skipButton": "Atla",
+    "goToHomeButton": "Ana Sayfaya Git"
+  },
+  "context": {
+    "description": "Bir tedavi veya konuşma seçin."
+  },
+  "description": {
+    "cta": "Daha fazla bilgi görüntülemek için bu öğelerden herhangi birine tıklayın."
+  }
+}

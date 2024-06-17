@@ -1,0 +1,17 @@
+{
+  "hello": "こんにちは！",
+  "ui": {
+    "nextButton": "次へ",
+    "completeButton": "完了",
+    "cancelButton": "キャンセル",
+    "closeButton": "閉じる",
+    "skipButton": "スキップ",
+    "goToHomeButton": "ホームに移動"
+  },
+  "context": {
+    "description": "治療または会話を選択してください。"
+  },
+  "description": {
+    "cta": "詳細を表示するには、これらの項目のいずれかをクリックしてください。"
+  }
+}

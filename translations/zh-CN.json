@@ -1,0 +1,17 @@
+{
+  "hello": "你好！",
+  "ui": {
+    "nextButton": "下一步",
+    "completeButton": "完成",
+    "cancelButton": "取消",
+    "closeButton": "关闭",
+    "skipButton": "跳过",
+    "goToHomeButton": "回到首页"
+  },
+  "context": {
+    "description": "选择一个治疗或对话。"
+  },
+  "description": {
+    "cta": "点击这些项目中的任何一个以查看更多信息。"
+  }
+}

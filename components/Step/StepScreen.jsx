@@ -28,14 +28,11 @@ export const StepScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       {!data ? (
-        <View style={{ width: 100, height: 100 }}>
+        <View style={{ flex: 1 }}>
           <ActivityIndicator animating color={"#0C2074"} size={"large"} />
         </View>
       ) : (
-        <PagerView
-          initialPage={0}
-          style={{ height: "100%", width: "100%", backgroundColor: "orange" }}
-        >
+        <PagerView initialPage={0} style={styles.pagerView}>
           <View key={1} collapsable={false} style={{ backgroundColor: "red" }}>
             <Text>DATA FETCHED</Text>
           </View>
@@ -61,5 +58,10 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     alignItems: "center",
     backgroundColor: "#0C207430",
+  },
+  pagerView: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "orange",
   },
 });

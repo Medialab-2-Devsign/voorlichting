@@ -1,5 +1,13 @@
 {
   "hello": "Hi!",
+  "ui": {
+    "nextButton": "Next",
+    "completeButton": "Complete",
+    "cancelButton": "Cancel",
+    "closeButton": "Close",
+    "skipButton": "Skip",
+    "goToHomeButton": "Go to Home"
+  },
   "context": {
     "description": "Select a treatment or conversation."
   },
