@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import { getEntryByID } from "../../api/api";
+import PagerView from "react-native-pager-view";
+import { TranslationContext } from "../../contexts/TranslationContext";
 
 export const StepScreen = ({ navigation, route }) => {
+  const { i18n } = useContext(TranslationContext);
   const [id, setID] = useState(null);
   const [data, setData] = useState();
 
@@ -15,9 +18,9 @@ export const StepScreen = ({ navigation, route }) => {
   }, []);
 
   useEffect(() => {
-    if (id === null) return;
+    if (id === undefined) return;
     (async () => {
-      const res = await getEntryByID(id);
+      const res = await getEntryByID(id, i18n.locale, "sys.createdAt");
       setData(res);
     })();
   }, [id]);
@@ -29,9 +32,24 @@ export const StepScreen = ({ navigation, route }) => {
           <ActivityIndicator animating color={"#0C2074"} size={"large"} />
         </View>
       ) : (
-        <View>
-          <Text>DATA FETCHED</Text>
-        </View>
+        <PagerView
+          initialPage={0}
+          style={{ height: "100%", width: "100%", backgroundColor: "orange" }}
+        >
+          <View key={1} collapsable={false} style={{ backgroundColor: "red" }}>
+            <Text>DATA FETCHED</Text>
+          </View>
+          <View
+            key={2}
+            collapsable={false}
+            style={{ backgroundColor: "white" }}
+          >
+            <Text>DATA FETCHED 2</Text>
+          </View>
+          <View key={3} collapsable={false} style={{ backgroundColor: "blue" }}>
+            <Text>DATA FETCHED 3</Text>
+          </View>
+        </PagerView>
       )}
     </View>
   );
