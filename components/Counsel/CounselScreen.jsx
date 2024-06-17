@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   FlatList,
   useWindowDimensions,
+  Text,
 } from "react-native";
 import { TranslationContext } from "../../contexts/TranslationContext";
 import { getEntryByID, getEntriesByIDs } from "../../api/api";
 
 import { ListCard } from "../Cards/ListCard";
+import Markdown from "react-native-markdown-display";
 
 export const CounselScreen = ({ navigation, route }) => {
   const { i18n } = useContext(TranslationContext);
@@ -57,11 +58,17 @@ export const CounselScreen = ({ navigation, route }) => {
 
   const renderListHeader = () => {
     return (
-      <Text style={styles.description.text}>
-        {/* // wtf */}
-        {data?.fields?.description?.content[0]?.content[0]?.value ?? ""}{" "}
-        {i18n.t("description.cta")}
-      </Text>
+      <View
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <Markdown style={styles.markdown}>
+          {data?.fields?.description ?? ""}
+        </Markdown>
+        <Text style={styles.description.text}>
+          {" "}
+          {i18n.t("description.cta")}
+        </Text>
+      </View>
     );
   };
 
@@ -98,6 +105,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#0C207430",
   },
   description: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+    text: {
+      fontSize: 20,
+    },
+  },
+  markdown: {
     marginHorizontal: 20,
     marginVertical: 10,
     text: {

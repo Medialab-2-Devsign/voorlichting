@@ -48,9 +48,17 @@ export const HomeScreen = ({ navigation }) => {
           keyExtractor={(item) => item.sys.id}
           style={{ width: "100%" }}
           ListHeaderComponent={
-            <Text style={styles.description.text}>
-              {i18n.t("context.description")} {i18n.t("description.cta")}
-            </Text>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Text style={styles.description.text}>
+                {i18n.t("context.description")} {i18n.t("description.cta")}
+              </Text>
+            </View>
           }
           ListHeaderComponentStyle={styles.description}
         />
