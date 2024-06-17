@@ -1,10 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import { useContext, useEffect, useState, useRef } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native";
 import { getEntryByID, getEntriesByIDs } from "../../api/api";
 import PagerView from "react-native-pager-view";
 import { TranslationContext } from "../../contexts/TranslationContext";
 import Markdown from "react-native-markdown-display";
 import { Image } from "expo-image";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { blurhash } from "../../frontend/blurhash";
 
 export const StepScreen = ({ navigation, route }) => {
@@ -13,6 +20,19 @@ export const StepScreen = ({ navigation, route }) => {
   const [data, setData] = useState();
   const [steps, setSteps] = useState();
   const [currentPage, setCurrentPage] = useState(0);
+  const pagerRef = useRef(null);
+
+  const handleNext = () => {
+    if (currentPage < steps.items.length - 1) {
+      pagerRef.current.setPage(currentPage + 1);
+    }
+  };
+
+  const handleBack = () => {
+    if (currentPage > 0) {
+      pagerRef.current.setPage(currentPage - 1);
+    }
+  };
 
   useEffect(() => {
     if (!route?.params?.id && !id) {
@@ -60,6 +80,7 @@ export const StepScreen = ({ navigation, route }) => {
             pageMargin={20}
             layoutDirection={"ltr"}
             onPageSelected={(e) => setCurrentPage(e.nativeEvent.position)}
+            ref={pagerRef}
           >
             {steps?.items &&
               steps?.items?.map((step) => {
@@ -90,17 +111,56 @@ export const StepScreen = ({ navigation, route }) => {
                 );
               })}
           </PagerView>
-          <View style={styles.breadcrumbsContainer}>
-            {steps?.items?.map((_, index) => (
-              <View
-                key={index}
+          {steps?.items && (
+            <View style={styles.breadcrumbsContainer}>
+              {steps?.items?.map((_, index) => (
+                <View
+                  key={index}
+                  style={[
+                    styles.breadcrumbDot,
+                    index === currentPage && styles.activeBreadcrumbDot,
+                  ]}
+                />
+              ))}
+            </View>
+          )}
+          {steps?.items && (
+            <View style={styles.navigationButtonsContainer}>
+              <TouchableOpacity
+                onPress={handleBack}
+                disabled={currentPage === 0}
                 style={[
-                  styles.breadcrumbDot,
-                  index === currentPage && styles.activeBreadcrumbDot,
+                  styles.navigationButton,
+                  currentPage === 0 && styles.disabledButton,
                 ]}
-              />
-            ))}
-          </View>
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color={currentPage === 0 ? "#AAAAAA" : "#FFFFFF"}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleNext}
+                disabled={currentPage === steps.items.length - 1}
+                style={[
+                  styles.navigationButton,
+                  currentPage === steps.items.length - 1 &&
+                    styles.disabledButton,
+                ]}
+              >
+                <Ionicons
+                  name="chevron-forward"
+                  size={24}
+                  color={
+                    currentPage === steps.items.length - 1
+                      ? "#AAAAAA"
+                      : "#FFFFFF"
+                  }
+                />
+              </TouchableOpacity>
+            </View>
+          )}
         </>
       )}
     </View>
@@ -163,5 +223,24 @@ const styles = StyleSheet.create({
   },
   activeBreadcrumbDot: {
     backgroundColor: "#0C2074",
+  },
+
+  navigationButtonsContainer: {
+    position: "absolute",
+    top: "40%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    padding: 20,
+  },
+  navigationButton: {
+    backgroundColor: "#0C2074",
+    padding: 10,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  disabledButton: {
+    opacity: 0,
   },
 });
