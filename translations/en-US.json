@@ -1,3 +1,17 @@
 {
-  "hello": "Hi!"
+  "hello": "Hi!",
+  "ui": {
+    "nextButton": "Next",
+    "completeButton": "Complete",
+    "cancelButton": "Cancel",
+    "closeButton": "Close",
+    "skipButton": "Skip",
+    "goToHomeButton": "Go to Home"
+  },
+  "context": {
+    "description": "Select a treatment or conversation."
+  },
+  "description": {
+    "cta": "Click on any of these items to view more information."
+  }
 }

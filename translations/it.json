@@ -1,0 +1,17 @@
+{
+  "hello": "Ciao!",
+  "ui": {
+    "nextButton": "Avanti",
+    "completeButton": "Completa",
+    "cancelButton": "Annulla",
+    "closeButton": "Chiudi",
+    "skipButton": "Salta",
+    "goToHomeButton": "Vai alla Home"
+  },
+  "context": {
+    "description": "Seleziona un trattamento o una conversazione."
+  },
+  "description": {
+    "cta": "Clicca su uno di questi elementi per visualizzare ulteriori informazioni."
+  }
+}

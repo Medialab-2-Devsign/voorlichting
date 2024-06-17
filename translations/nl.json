@@ -1,0 +1,9 @@
+{
+  "hello": "Hallo!",
+  "context": {
+    "description": "Selecteer een behandeling of gesprek."
+  },
+  "description": {
+    "cta": "Klik op een van deze onderdelen om meer informatie te zien."
+  }
+}
