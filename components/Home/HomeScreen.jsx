@@ -49,7 +49,7 @@ export const HomeScreen = ({ navigation }) => {
           style={{ width: "100%" }}
           ListHeaderComponent={
             <Text style={styles.description.text}>
-              {i18n.t("context.description")}
+              {i18n.t("context.description")} {i18n.t("description.cta")}
             </Text>
           }
           ListHeaderComponentStyle={styles.description}
