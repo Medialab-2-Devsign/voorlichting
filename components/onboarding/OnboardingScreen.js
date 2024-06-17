@@ -61,6 +61,7 @@ const OnboardingScreen = (props) => {
           image: <Image source={GlobeImage} style={styles.image} />,
         },
         {
+          title: <View />,
           backgroundColor: colors.grey__100,
           image: <Image source={GlobeImage} style={styles.image} />,
           subtitle: (
