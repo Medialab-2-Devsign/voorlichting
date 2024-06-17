@@ -1,5 +1,8 @@
 {
-  "hello": "Hi!",
+  "onboard": {
+    "title": "Welcome to MC Communications",
+    "subtitle": "This app helps you understand conversations and information better during your hospital visit. Select your language on the next screen."
+  },
   "ui": {
     "nextButton": "Next",
     "completeButton": "Complete",

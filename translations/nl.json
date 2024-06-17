@@ -1,5 +1,8 @@
 {
-  "hello": "Hallo!",
+  "onboard": {
+    "title": "Welkom bij MC Communications",
+    "subtitle": "Deze app helpt u tijdens uw bezoek aan het ziekenhuis om gesprekken en informatie beter te begrijpen. Selecteer uw taal op het volgende scherm."
+  },
   "ui": {
     "nextButton": "Volgende",
     "completeButton": "Voltooi",

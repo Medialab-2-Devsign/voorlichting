@@ -1,5 +1,8 @@
 {
-  "hello": "こんにちは！",
+  "onboard": {
+    "title": "MC Communicationsへようこそ",
+    "subtitle": "このアプリは、病院訪問中に会話や情報をよりよく理解するのに役立ちます。次の画面で言語を選択してください。"
+  },
   "ui": {
     "nextButton": "次へ",
     "completeButton": "完了",

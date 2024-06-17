@@ -1,5 +1,8 @@
 {
-  "hello": "Merhaba!",
+  "onboard": {
+    "title": "MC Communications'a Hoş Geldiniz",
+    "subtitle": "Bu uygulama, hastane ziyaretiniz sırasında sohbetleri ve bilgileri daha iyi anlamanıza yardımcı olur. Bir sonraki ekranda dilinizi seçin."
+  },
   "ui": {
     "nextButton": "Sonraki",
     "completeButton": "Tamamla",

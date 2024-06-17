@@ -1,5 +1,8 @@
 {
-  "hello": "Ciao!",
+  "onboard": {
+    "title": "Benvenuti in MC Communications",
+    "subtitle": "Questa app ti aiuta a capire meglio le conversazioni e le informazioni durante la tua visita in ospedale. Seleziona la tua lingua nella schermata successiva."
+  },
   "ui": {
     "nextButton": "Avanti",
     "completeButton": "Completa",

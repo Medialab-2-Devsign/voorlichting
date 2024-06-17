@@ -1,5 +1,8 @@
 {
-  "hello": "你好！",
+  "onboard": {
+    "title": "欢迎使用 MC Communications",
+    "subtitle": "本应用程序可帮助您在就诊期间更好地理解对话和信息。在下一个屏幕上选择您的语言。"
+  },
   "ui": {
     "nextButton": "下一步",
     "completeButton": "完成",
